@@ -11,22 +11,25 @@ import { AuthProvider } from "@/contexts/auth-context";
 import { ProtectedRoute } from "./layouts/protected-route";
 import { TodoProvider } from "./contexts/todo-context";
 import "./index.css";
+import { ThemeProvider } from "./contexts/theme-context";
 
 createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <AuthProvider>
       <TodoProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<MainLayout />}>
-              <Route element={<ProtectedRoute />}>
-                <Route index element={<IndexPage />} />
+        <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<MainLayout />}>
+                <Route element={<ProtectedRoute />}>
+                  <Route index element={<IndexPage />} />
+                </Route>
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
               </Route>
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-            </Route>
-          </Routes>
-        </BrowserRouter>
+            </Routes>
+          </BrowserRouter>
+        </ThemeProvider>
       </TodoProvider>
     </AuthProvider>
   </React.StrictMode>,
