@@ -16,6 +16,6 @@ export class UsersController {
   @UseGuards(AuthGuard)
   @Get('/profile')
   async getUserProfile(@Request() req: ProfileRequest) {
-    return await this.usersService.findOneByEmail(req.user.email);
+    return await this.usersService.findOneById(req.user.id);
   }
 }

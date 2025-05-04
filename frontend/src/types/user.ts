@@ -1,5 +1,8 @@
+import { Todo } from "@/types/todo";
+
 export interface User {
   id: string;
-  email: string;
   username: string;
+  email: string;
+  todos: Array<Todo>;
 }

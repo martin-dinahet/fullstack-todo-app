@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 
 import { AuthContextType } from "@/types/auth-context";
 import { User } from "@/types/user";
@@ -146,4 +146,4 @@ export const AuthProvider: React.FC<Props> = ({ children }) => {
   );
 };
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = () => React.useContext(AuthContext);
