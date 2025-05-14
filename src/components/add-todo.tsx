@@ -15,9 +15,24 @@ export const AddTodo: React.FC = () => {
   };
 
   return (
-    <form action={() => handleSubmit({ title })}>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} required />
-      <button type="submit">Create Todo</button>
+    <form action={() => handleSubmit({ title })} className="flex items-end gap-2">
+      <div className="flex flex-col w-full">
+        <label htmlFor="title" className="label">
+          Title
+        </label>
+        <input
+          type="text"
+          className="input w-full"
+          id="title"
+          placeholder="Do the dishes"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+      </div>
+      <button type="submit" className="btn">
+        Create Todo
+      </button>
     </form>
   );
 };
