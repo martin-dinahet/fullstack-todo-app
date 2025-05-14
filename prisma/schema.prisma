@@ -17,8 +17,10 @@ datasource db {
 model Todo {
 
   id          String       @id @default(uuid())
-  done        Boolean      @default(false)
   title       String
+  completed   Boolean      @default(false)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
 
   @@map("todos")
 }

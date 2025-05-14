@@ -881,40 +881,52 @@ export namespace Prisma {
 
   export type TodoMinAggregateOutputType = {
     id: string | null
-    done: boolean | null
     title: string | null
+    completed: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type TodoMaxAggregateOutputType = {
     id: string | null
-    done: boolean | null
     title: string | null
+    completed: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type TodoCountAggregateOutputType = {
     id: number
-    done: number
     title: number
+    completed: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
 
   export type TodoMinAggregateInputType = {
     id?: true
-    done?: true
     title?: true
+    completed?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type TodoMaxAggregateInputType = {
     id?: true
-    done?: true
     title?: true
+    completed?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type TodoCountAggregateInputType = {
     id?: true
-    done?: true
     title?: true
+    completed?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -992,8 +1004,10 @@ export namespace Prisma {
 
   export type TodoGroupByOutputType = {
     id: string
-    done: boolean
     title: string
+    completed: boolean
+    createdAt: Date
+    updatedAt: Date
     _count: TodoCountAggregateOutputType | null
     _min: TodoMinAggregateOutputType | null
     _max: TodoMaxAggregateOutputType | null
@@ -1015,37 +1029,47 @@ export namespace Prisma {
 
   export type TodoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    done?: boolean
     title?: boolean
+    completed?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["todo"]>
 
   export type TodoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    done?: boolean
     title?: boolean
+    completed?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["todo"]>
 
   export type TodoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    done?: boolean
     title?: boolean
+    completed?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["todo"]>
 
   export type TodoSelectScalar = {
     id?: boolean
-    done?: boolean
     title?: boolean
+    completed?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type TodoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "done" | "title", ExtArgs["result"]["todo"]>
+  export type TodoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "completed" | "createdAt" | "updatedAt", ExtArgs["result"]["todo"]>
 
   export type $TodoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Todo"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      done: boolean
       title: string
+      completed: boolean
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["todo"]>
     composites: {}
   }
@@ -1470,8 +1494,10 @@ export namespace Prisma {
    */
   interface TodoFieldRefs {
     readonly id: FieldRef<"Todo", 'String'>
-    readonly done: FieldRef<"Todo", 'Boolean'>
     readonly title: FieldRef<"Todo", 'String'>
+    readonly completed: FieldRef<"Todo", 'Boolean'>
+    readonly createdAt: FieldRef<"Todo", 'DateTime'>
+    readonly updatedAt: FieldRef<"Todo", 'DateTime'>
   }
     
 
@@ -1854,8 +1880,10 @@ export namespace Prisma {
 
   export const TodoScalarFieldEnum: {
     id: 'id',
-    done: 'done',
-    title: 'title'
+    title: 'title',
+    completed: 'completed',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type TodoScalarFieldEnum = (typeof TodoScalarFieldEnum)[keyof typeof TodoScalarFieldEnum]
@@ -1904,6 +1932,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
+   * Reference to a field of type 'DateTime[]'
+   */
+  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1925,14 +1967,18 @@ export namespace Prisma {
     OR?: TodoWhereInput[]
     NOT?: TodoWhereInput | TodoWhereInput[]
     id?: StringFilter<"Todo"> | string
-    done?: BoolFilter<"Todo"> | boolean
     title?: StringFilter<"Todo"> | string
+    completed?: BoolFilter<"Todo"> | boolean
+    createdAt?: DateTimeFilter<"Todo"> | Date | string
+    updatedAt?: DateTimeFilter<"Todo"> | Date | string
   }
 
   export type TodoOrderByWithRelationInput = {
     id?: SortOrder
-    done?: SortOrder
     title?: SortOrder
+    completed?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type TodoWhereUniqueInput = Prisma.AtLeast<{
@@ -1940,14 +1986,18 @@ export namespace Prisma {
     AND?: TodoWhereInput | TodoWhereInput[]
     OR?: TodoWhereInput[]
     NOT?: TodoWhereInput | TodoWhereInput[]
-    done?: BoolFilter<"Todo"> | boolean
     title?: StringFilter<"Todo"> | string
+    completed?: BoolFilter<"Todo"> | boolean
+    createdAt?: DateTimeFilter<"Todo"> | Date | string
+    updatedAt?: DateTimeFilter<"Todo"> | Date | string
   }, "id">
 
   export type TodoOrderByWithAggregationInput = {
     id?: SortOrder
-    done?: SortOrder
     title?: SortOrder
+    completed?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: TodoCountOrderByAggregateInput
     _max?: TodoMaxOrderByAggregateInput
     _min?: TodoMinOrderByAggregateInput
@@ -1958,50 +2008,66 @@ export namespace Prisma {
     OR?: TodoScalarWhereWithAggregatesInput[]
     NOT?: TodoScalarWhereWithAggregatesInput | TodoScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Todo"> | string
-    done?: BoolWithAggregatesFilter<"Todo"> | boolean
     title?: StringWithAggregatesFilter<"Todo"> | string
+    completed?: BoolWithAggregatesFilter<"Todo"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"Todo"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Todo"> | Date | string
   }
 
   export type TodoCreateInput = {
     id?: string
-    done?: boolean
     title: string
+    completed?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TodoUncheckedCreateInput = {
     id?: string
-    done?: boolean
     title: string
+    completed?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TodoUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    done?: BoolFieldUpdateOperationsInput | boolean
     title?: StringFieldUpdateOperationsInput | string
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TodoUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    done?: BoolFieldUpdateOperationsInput | boolean
     title?: StringFieldUpdateOperationsInput | string
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TodoCreateManyInput = {
     id?: string
-    done?: boolean
     title: string
+    completed?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type TodoUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    done?: BoolFieldUpdateOperationsInput | boolean
     title?: StringFieldUpdateOperationsInput | string
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TodoUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    done?: BoolFieldUpdateOperationsInput | boolean
     title?: StringFieldUpdateOperationsInput | string
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2024,22 +2090,39 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
   export type TodoCountOrderByAggregateInput = {
     id?: SortOrder
-    done?: SortOrder
     title?: SortOrder
+    completed?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type TodoMaxOrderByAggregateInput = {
     id?: SortOrder
-    done?: SortOrder
     title?: SortOrder
+    completed?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type TodoMinOrderByAggregateInput = {
     id?: SortOrder
-    done?: SortOrder
     title?: SortOrder
+    completed?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2068,12 +2151,30 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2093,6 +2194,17 @@ export namespace Prisma {
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2129,6 +2241,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
 
