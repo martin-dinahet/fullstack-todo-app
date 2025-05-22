@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "prettier": {
+    "printWidth": 100,
     "plugins": [
       "prettier-plugin-tailwindcss"
     ]
@@ -22,7 +23,8 @@
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwind-merge": "^3.3.0"
+    "tailwind-merge": "^3.3.0",
+    "zod": "^3.25.20"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
