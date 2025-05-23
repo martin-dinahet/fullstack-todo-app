@@ -1,6 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 const createTodoSchema = z.object({
@@ -16,4 +17,5 @@ export const createTodo = async (formData: FormData) => {
   }
   const { title } = result.data;
   await prisma.todo.create({ data: { title } });
+  revalidatePath("/");
 };
