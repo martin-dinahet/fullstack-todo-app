@@ -8,7 +8,7 @@ const createTodoSchema = z.object({
   title: z.string().min(1),
 });
 
-export const createTodo = async (formData: FormData) => {
+export const createTodo = async (prevState: unknown, formData: FormData) => {
   const result = createTodoSchema.safeParse({
     title: formData.get("title"),
   });

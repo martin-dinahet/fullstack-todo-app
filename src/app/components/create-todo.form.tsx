@@ -1,12 +1,8 @@
 import { createTodo } from "@/actions/create-todo";
-import { executeAction } from "@/lib/execute-action";
+import { useActionState } from "react";
 
 export const CreateTodoForm: React.FC = ({}) => {
-  const action = async (formData: FormData) => {
-    "use server";
-    const result = await executeAction(() => createTodo(formData));
-    if (!result.success) throw new Error("Failed to create todo");
-  };
+  const [data, action, isPending] = useActionState(createTodo, undefined);
 
   return (
     <div>
