@@ -8,14 +8,12 @@ const createTodoSchema = z.object({
   title: z.string().min(1),
 });
 
-export const createTodo = async (prevState: unknown, formData: FormData) => {
-  const result = createTodoSchema.safeParse({
+export const createTodo = async (_prev: unknown, formData: FormData) => {
+  const parsed = createTodoSchema.safeParse({
     title: formData.get("title"),
   });
-  if (!result.success) {
-    throw new Error(result.error.message);
-  }
-  const { title } = result.data;
-  await prisma.todo.create({ data: { title } });
+  if (!parsed.success) return { ok: false, error: "Invalid form data" };
+  await prisma.todo.create({ data: { title: parsed.data.title } });
   revalidatePath("/");
+  return { ok: true };
 };
